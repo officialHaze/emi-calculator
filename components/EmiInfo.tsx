@@ -4,6 +4,9 @@ import { seperateDigits } from "@/utils/seperateDigitsWithComma";
 import BackArrow from "./BackArrow";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import TotalPayables from "./TotalPayables";
+import ChartLabels from "./ChartLabels";
+import AllInfo from "./AllInfo";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -15,9 +18,15 @@ interface Props {
 		totalPrincipal: string;
 		totalInterest: string;
 	};
+	formData: {
+		loan: string;
+		down: string;
+		tenure: string;
+		interest: string;
+	};
 }
 
-export default function EmiInfo({ handleClick, emiValue, payables }: Props) {
+export default function EmiInfo({ handleClick, emiValue, payables, formData }: Props) {
 	const [revisedEmiVal, setRevisedEmiVal] = useState<string>();
 	const [revisedPayables, setRevisedPayables] = useState({
 		totalPrincipal: "",
@@ -87,39 +96,15 @@ export default function EmiInfo({ handleClick, emiValue, payables }: Props) {
 						}}
 					/> //pie chart
 				)}
-				<div className={styles.chart_labels}>
-					<ul>
-						<li>
-							<p>Principal Amount</p>
-						</li>
-						<li>
-							<p>Total Payable Interest</p>
-						</li>
-						<li>
-							<p>Total Payable Amount</p>
-						</li>
-					</ul>
-				</div>
-
-				<div className={styles.chart_labels_value}>
-					<ul>
-						<li>
-							<p style={{ display: "flex", alignItems: "center" }}>
-								{revisedPayables.totalPrincipal}
-							</p>
-						</li>
-						<li>
-							<p style={{ display: "flex", alignItems: "center" }}>
-								{revisedPayables.totalInterest}
-							</p>
-						</li>
-						<li>
-							<p style={{ display: "flex", alignItems: "center" }}>
-								{revisedPayables.totalAmount}
-							</p>
-						</li>
-					</ul>
-				</div>
+				<ChartLabels />
+				<TotalPayables revisedPayables={revisedPayables} />
+			</div>
+			<AllInfo formData={formData} />
+			<div className={styles.warning}>
+				<p>
+					Calculations done here might change subject to your bank's norms and Interest
+					Rates
+				</p>
 			</div>
 		</div>
 	);

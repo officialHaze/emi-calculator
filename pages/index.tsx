@@ -7,6 +7,7 @@ import { calculateEMI } from "@/utils/calculateEMI";
 import EmiInfo from "@/components/EmiInfo";
 import BackArrow from "@/components/BackArrow";
 import { calculateTotalPayables } from "@/utils/calculateTotalPayables";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({ weight: ["400", "600"], subsets: ["latin"] });
 
@@ -81,7 +82,7 @@ export default function Home() {
 				/>
 				<link
 					rel="icon"
-					href="/favicon.ico"
+					href="/icons8-calculator-96.png"
 				/>
 			</Head>
 			<main className={`${styles.main} ${poppins.className}`}>
@@ -103,15 +104,17 @@ export default function Home() {
 							formData={setFormData}
 						/>
 					</div>
-					{emi && totalPayables && (
+					{emi && totalPayables && formData && (
 						<EmiInfo
 							handleClick={handleClick}
 							emiValue={emi}
 							payables={totalPayables}
+							formData={formData}
 						/>
 					)}
 				</div>
 			</main>
+			<Footer poppins={poppins} />
 		</>
 	);
 }

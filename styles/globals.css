@@ -101,3 +101,10 @@ a {
 		color-scheme: dark;
 	}
 }
+
+/* for small viewports  */
+@media only screen and (max-width: 642px) {
+	body {
+		background: #1b262c;
+	}
+}

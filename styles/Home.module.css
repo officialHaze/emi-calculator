@@ -7,7 +7,7 @@
 
 .app_container {
 	position: relative;
-	min-height: 90vh;
+	min-height: 55rem;
 	width: 26rem;
 	box-shadow: 7px 7px 30px rgba(0, 0, 0, 0.3);
 	transition: transform 0.8s;
@@ -91,12 +91,18 @@
 	padding: 1rem 0;
 	margin-top: 3rem;
 	justify-content: space-evenly;
+	box-shadow: 0 7px 5px rgba(0, 0, 0, 0.2);
 }
 
 .chart_labels > ul,
 .chart_labels_value > ul {
 	list-style-position: inside;
 	list-style: none;
+}
+
+/* making the chart labels color grey  */
+.chart_labels > ul {
+	color: #b2b2b2;
 }
 
 .chart_labels > ul > li,
@@ -141,4 +147,25 @@
 .chart_labels_value > ul > li:nth-child(3)::before {
 	color: #1b262c;
 	width: 0;
+}
+
+/* warning text  */
+.warning {
+	text-align: center;
+	font-size: 0.75rem;
+	padding: 2rem;
+	color: #b2b2b2;
+}
+
+/* for small viewports  */
+@media only screen and (max-width: 642px) {
+	.app_container,
+	.app,
+	.result {
+		border-radius: 0;
+	}
+
+	.app_container {
+		box-shadow: none;
+	}
 }
