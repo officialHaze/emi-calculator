@@ -84,7 +84,6 @@ body {
 
 body {
 	color: rgb(var(--foreground-rgb));
-	/* background: linear-gradient(to right bottom, #537fe7, #2f58cd); */
 	background-image: url("../public/3351062.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
